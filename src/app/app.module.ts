@@ -4,15 +4,16 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
+import { BtnCellRenderer } from './btn-cell-renderer.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AgGridModule.withComponents(null)
+    AgGridModule.withComponents([BtnCellRenderer]),
   ],
   declarations: [
-    AppComponent,
+    AppComponent,BtnCellRenderer
 
   ],
   bootstrap: [ AppComponent ]
