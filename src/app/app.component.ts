@@ -12,18 +12,10 @@ export class AppComponent {
         {headerName: 'Price', field: 'price'}
     ];
 
-    // rowData = [
-    //     {make: 'Toyota', model: 'Celica', price: 35000},
-    //     {make: 'Ford', model: 'Mondeo', price: 32000},
-    //     {make: 'Porsche', model: 'Boxter', price: 72000}
-    // ];
-
-    rowData = [];
-
-  ngOnInit() {
-    fetch('https://api.jsonbin.io/b/5fbcbaba04be4f05c9299a67')
-      .then(result => result.json())
-      .then(rowData => this.rowData = rowData);
-  }
+    rowData = [
+        {make: 'Toyota', model: 'Celica', price: 35000},
+        {make: 'Ford', model: 'Mondeo', price: 32000},
+        {make: 'Porsche', model: 'Boxter', price: 72000}
+    ];
 
 }
