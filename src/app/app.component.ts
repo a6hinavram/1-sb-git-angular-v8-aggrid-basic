@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   columnDefs = [
-        {headerName: 'Make', field: 'make'},
+        {headerName: 'Make', field: 'make',checkboxSelection: true},
         {headerName: 'Model', field: 'model'},
         {headerName: 'Price', field: 'price'}
     ];
