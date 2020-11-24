@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {RedComponentComponent} from "./red-component/red-component.component";
+
+// Ref
+// https://stackblitz.com/edit/angular-ag-grid-angular
 
 @Component({
   selector: 'app-root',
@@ -7,7 +11,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   columnDefs = [
-        {headerName: 'Make', field: 'make'},
+        {headerName: 'Make', field: 'make', cellRendererFramework: RedComponentComponent,},
         {headerName: 'Model', field: 'model'},
         {headerName: 'Price', field: 'price'}
     ];

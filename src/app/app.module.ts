@@ -4,15 +4,17 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
+import {RedComponentComponent} from "./red-component/red-component.component";
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AgGridModule.withComponents(null)
+    AgGridModule.withComponents([RedComponentComponent])
   ],
   declarations: [
     AppComponent,
+    RedComponentComponent
 
   ],
   bootstrap: [ AppComponent ]
