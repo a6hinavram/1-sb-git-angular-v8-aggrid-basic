@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   columnDefs = [
-        {headerName: 'Make', field: 'make'},
-        {headerName: 'Model', field: 'model'},
+        {headerName: 'Make', field: 'make', sortable: true, filter: true},
+        {headerName: 'Model', field: 'model',sortable: true},
         {headerName: 'Price', field: 'price'}
     ];
 
