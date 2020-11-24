@@ -1,26 +1,40 @@
-import { Component, OnDestroy } from "@angular/core";
+// Author: T4professor
 
-import { ICellRendererAngularComp } from "@ag-grid-community/angular";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams, IAfterGuiAttachedParams } from 'ag-grid';
 
 @Component({
-  selector: "btn-cell-renderer",
+  selector: 'app-button-renderer',
   template: `
-    <button (click)="btnClickedHandler($event)">Click me!</button>
-  `
+    <button type="button" (click)="onClick($event)">{{label}}</button>
+    `
 })
-export class BtnCellRenderer implements ICellRendererAngularComp, OnDestroy {
-  private params: any;
 
-  agInit(params: any): void {
+export class ButtonRendererComponent implements ICellRendererAngularComp {
+
+  params;
+  label: string;
+
+  agInit(params): void {
     this.params = params;
+    this.label = this.params.label || null;
   }
 
-  btnClickedHandler() {
-    this.params.clicked(this.params.value);
+  refresh(params?: any): boolean {
+    return true;
   }
 
-  ngOnDestroy() {
-    // no need to remove the button click handler
-    // https://stackoverflow.com/questions/49083993/does-angular-automatically-remove-template-event-listeners
+  onClick($event) {
+    if (this.params.onClick instanceof Function) {
+      // put anything into params u want pass into parents component
+      const params = {
+        event: $event,
+        rowData: this.params.node.data
+        // ...something
+      }
+      this.params.onClick(params);
+
+    }
   }
 }
