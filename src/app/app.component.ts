@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   columnDefs = [
+    {headerName: '', field: ''},
     {headerName: 'JobID', field: 'JobID'},
         {headerName: 'Date', field: 'CreatedDate'},
         {headerName: 'Title', field: 'Title'},
