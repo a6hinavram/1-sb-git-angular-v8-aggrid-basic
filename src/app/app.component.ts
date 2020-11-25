@@ -7,9 +7,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   columnDefs = [
-        {headerName: 'Make', field: 'make'},
-        {headerName: 'Model', field: 'model'},
-        {headerName: 'Price', field: 'price'}
+    {headerName: 'JobID', field: 'JobID'},
+        {headerName: 'Date', field: 'CreatedDate'},
+        {headerName: 'Title', field: 'Title'},
+        {headerName: 'Company', field: 'CompanyName'},
+        {headerName: 'Hiring Manager', field: ''},
+        {headerName: 'Location', field: 'Location'},
+        {headerName: 'Status', field: 'JobStatus'},
+      
     ];
 
     // rowData = [
@@ -21,7 +26,7 @@ export class AppComponent {
     rowData = [];
 
   ngOnInit() {
-    fetch('https://api.jsonbin.io/b/5fbcbaba04be4f05c9299a67')
+    fetch('https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo')
       .then(result => result.json())
       .then(rowData => this.rowData = rowData);
   }
