@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NumberFormatterComponent} from './number-formatter.component';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,17 @@ export class AppComponent {
   columnDefs = [
         {headerName: 'Make', field: 'make'},
         {headerName: 'Model', field: 'model'},
-        {headerName: 'Price', field: 'price'}
+        {
+          headerName: 'Price', 
+          field: 'price',
+          cellRenderer: 'numberFormatterComponent',
+          }
     ];
+
+    frameworkComponents = {
+    numberFormatterComponent: NumberFormatterComponent,
+
+  };
 
     rowData = [
         {make: 'Toyota', model: 'Celica', price: 35000},
