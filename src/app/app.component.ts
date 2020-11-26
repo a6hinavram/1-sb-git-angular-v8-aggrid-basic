@@ -8,9 +8,11 @@ import { AgGridAngular } from "ag-grid-angular";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  @ViewChild("agGrid") agGrid: AgGridAngular;
-
-  constructor(private http: HttpClient) { }
+ 
+rowData: any;
+  constructor(private http: HttpClient) {
+   
+   }
 
   title = "my-app";
 
@@ -20,9 +22,17 @@ export class AppComponent implements OnInit {
     { field: "price", sortable: true, filter: true }
   ];
 
-  rowData: any;
+   ngOnInit() {
+        this.http.get<any>('https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/sample-data/smallRowData.json').subscribe({
+            next: data => {
+                this.rowData = data;
+            },
+            error: error => {
+                //this.errorMessage = error.message;
+                console.error('There was an error!', error);
+            }
+        })
+    }
 
-  ngOnInit() {
-    this.rowData = this.http.get('https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/sample-data/smallRowData.json');
-  }
+
 }
