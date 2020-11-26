@@ -1,4 +1,19 @@
-<div style="width: 600px;">
-    <ag-grid-angular #agGrid style="width: 100%; height: 200px;" class="ag-theme-balham" [gridOptions]="gridOptions">
-    </ag-grid-angular>
-</div>
+<div class="outer-div">
+    <div class="button-bar">
+      <button (click)="sizeToFit()">Size to Fit</button>
+      <button (click)="autoSizeAll(false)">Auto-Size All</button>
+      <button (click)="autoSizeAll(true)">Auto-Size All (Skip Header)</button>
+    </div>
+    <div class="grid-wrapper">
+      <ag-grid-angular
+        #agGrid
+        style="width: 100%; height: 100%;"
+        id="myGrid"
+        class="ag-theme-balham"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [rowData]="rowData"
+        (gridReady)="onGridReady($event)"
+      ></ag-grid-angular>
+    </div>
+  </div>
