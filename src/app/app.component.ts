@@ -23,7 +23,7 @@ rowData: any;
   ];
 
    ngOnInit() {
-        this.http.get<any>('https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/sample-data/smallRowData.json').subscribe({
+        this.http.get<any>('https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/sample-data/rowData.json').subscribe({
             next: data => {
                 this.rowData = data;
             },
