@@ -5,16 +5,20 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import {NumberFormatterComponent} from './number-formatter.component';
+import {NumericEditorComponent} from './numeric-editor.component';
+import {RangeFilterComponent} from './range-filter.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AgGridModule.withComponents([NumberFormatterComponent])
+    AgGridModule.withComponents([NumberFormatterComponent, NumericEditorComponent, RangeFilterComponent])
   ],
   declarations: [
     AppComponent,
-    NumberFormatterComponent
+    NumberFormatterComponent,
+    NumericEditorComponent,
+    RangeFilterComponent
 
   ],
   bootstrap: [ AppComponent ]
