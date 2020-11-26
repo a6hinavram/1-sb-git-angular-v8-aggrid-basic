@@ -14,6 +14,7 @@ import {NumberFormatterComponent} from './number-formatter.component';
   ],
   declarations: [
     AppComponent,
+    NumberFormatterComponent
 
   ],
   bootstrap: [ AppComponent ]
