@@ -16,7 +16,7 @@ export class AppComponent {
           enableFilter: true
         };
         this.gridOptions.columnDefs = [
-           {headerName: 'Make', field: 'make'},
+           {headerName: 'Make', field: 'make', resizable: true},
         {headerName: 'Model', field: 'model'},
         {headerName: 'Price', field: 'price'}
 
