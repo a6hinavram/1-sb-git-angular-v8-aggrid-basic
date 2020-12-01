@@ -35,25 +35,19 @@ export class AppComponent {
       { headerName: "Status", field: "JobStatus" }
     ];
 
-    this.gridOptions.sizeColumnsToFit();
+   this.gridOptions.pagination = true;
+
+   this.gridOptions.skipHeaderOnAutoSize = true;
 
     
   }
 
 
- 
-
-  // autoSizeAll(skipHeader) {
-  //   var allColumnIds = [];
-  //   this.gridColumnApi.getAllColumns().forEach(function (column) {
-  //     allColumnIds.push(column.colId);
-  //   });
-  //   this.gridColumnApi.autoSizeColumns(allColumnIds, skipHeader);
-  // }
-
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+
+    this.gridApi.sizeColumnsToFit();
 
     this.http
       .get(
