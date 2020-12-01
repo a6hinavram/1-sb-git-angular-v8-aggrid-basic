@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {GridOptions} from "ag-grid";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ export class AppComponent {
 
     private gridOptions: GridOptions;
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.gridOptions = <GridOptions>{
           enableSorting: true,
           // enable filtering 
@@ -28,19 +29,19 @@ export class AppComponent {
         {headerName: 'Status', field: 'JobStatus'},
     ];
 
- fetch('https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo')
-            .then(result => result.json())
-            .then(rowData => this.gridOptions.rowData = rowData);
-      
-        // this.gridOptions.rowData = [
-        //      {make: 'Toyota', model: 'Celica', price: 35000},
-        // {make: 'Ford', model: 'Mondeo', price: 32000},
-        // {make: 'Porsche', model: 'Boxter', price: 72000}
-        // ]
+    this.http.get<any>('https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo').subscribe({
+            next: data => {
+                this.gridOptions.rowData = data;
+            },
+            error: error => {
+                //this.errorMessage = error.message;
+                console.error('There was an error!', error);
+            }
+        })
     }
 
-    ngOnInit() {
-       
+   ngOnInit() {
+        
     }
 
 }
