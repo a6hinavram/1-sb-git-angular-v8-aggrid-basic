@@ -31,7 +31,8 @@ export class AppComponent {
 
     this.http.get<any>('https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo').subscribe({
             next: data => {
-                this.gridOptions.rowData = data;
+                this.gridOptions.rowData = data[0];
+                console.log(this.gridOptions.rowData);
             },
             error: error => {
                 //this.errorMessage = error.message;
