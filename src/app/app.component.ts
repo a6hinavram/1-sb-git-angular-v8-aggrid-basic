@@ -35,7 +35,7 @@ export class AppComponent {
       { headerName: "Status", field: "JobStatus" }
     ];
 
-    this.gridApi.sizeColumnsToFit();
+    this.gridOptions.sizeColumnsToFit();
 
     
   }
