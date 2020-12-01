@@ -35,8 +35,21 @@ export class AppComponent {
       { headerName: "Status", field: "JobStatus" }
     ];
 
+    this.gridApi.sizeColumnsToFit();
+
     
   }
+
+
+ 
+
+  // autoSizeAll(skipHeader) {
+  //   var allColumnIds = [];
+  //   this.gridColumnApi.getAllColumns().forEach(function (column) {
+  //     allColumnIds.push(column.colId);
+  //   });
+  //   this.gridColumnApi.autoSizeColumns(allColumnIds, skipHeader);
+  // }
 
   onGridReady(params) {
     this.gridApi = params.api;
