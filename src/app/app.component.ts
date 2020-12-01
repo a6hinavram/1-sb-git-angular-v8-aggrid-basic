@@ -34,6 +34,8 @@ export class AppComponent {
       { headerName: "Location", field: "Location" },
       { headerName: "Status", field: "JobStatus" }
     ];
+
+    
   }
 
   onGridReady(params) {
