@@ -4,7 +4,10 @@ import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-root",
-  templateUrl: "./app.component.html"
+  templateUrl: "./app.component.html",
+   host: {
+        "(window:resize)":"onWindowResize($event)"
+    }
 })
 export class AppComponent {
   private gridApi;
@@ -14,7 +17,14 @@ export class AppComponent {
   private defaultColDef;
   private rowData: [];
 
+  public mobileColumn = [{ headerName: "JobID", field: "JobID" },
+      { headerName: "Title", field: "Title" },
+      { headerName: "Company", field: "CompanyName" },
+      { headerName: "Status", field: "JobStatus" }];
+
   private gridOptions: GridOptions;
+  browserWidth: number = window.innerWidth;
+    browserHeight: number = window.innerHeight;
 
   constructor(private http: HttpClient) {
     this.gridOptions = <GridOptions>{
@@ -24,7 +34,13 @@ export class AppComponent {
     };
 
     // Column Defs
-    this.gridOptions.columnDefs = [
+    
+
+     if (this.browserWidth <= 480) {
+               this.gridOptions.columnDefs = this.mobileColumn;
+                //this.params.api.sizeColumnsToFit();
+            }else{
+this.gridOptions.columnDefs = [
       { headerName: "", field: "" },
       { headerName: "JobID", field: "JobID" },
       { headerName: "Date", field: "CreatedDate" },
@@ -34,6 +50,9 @@ export class AppComponent {
       { headerName: "Location", field: "Location" },
       { headerName: "Status", field: "JobStatus" }
     ];
+            }
+
+    
 
    this.gridOptions.pagination = true;
 
@@ -42,12 +61,37 @@ export class AppComponent {
     
   }
 
+  onWindowResize(event) {
+        this.browserWidth = event.target.innerWidth;
+        this.browserHeight = event.target.innerHeight;
+
+         setTimeout(function () {
+            if (window.innerWidth <= 480) {
+                this.gridOptions.setColumnDefs(this.mobileColumn);
+                this.params.api.sizeColumnsToFit();
+            }
+        })
+    }
+
+
+  sizeToFit() {
+    this.gridApi.sizeColumnsToFit();
+  }
+
+  autoSizeAll(skipHeader) {
+    var allColumnIds = [];
+    this.gridColumnApi.getAllColumns().forEach(function (column) {
+      allColumnIds.push(column.colId);
+    });
+    this.gridColumnApi.autoSizeColumns(allColumnIds, skipHeader);
+  }
+
 
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 
-    this.gridApi.sizeColumnsToFit();
+    this.sizeToFit();
 
     this.http
       .get(
