@@ -15,17 +15,31 @@ export class AppComponent {
           // enable filtering 
           enableFilter: true
         };
+       
+        // Column Defs
         this.gridOptions.columnDefs = [
-           {headerName: 'Make', field: 'make', resizable: true},
-        {headerName: 'Model', field: 'model'},
-        {headerName: 'Price', field: 'price'}
+                {headerName: '', field: ''},
+        {headerName: 'JobID', field: 'JobID'},
+        {headerName: 'Date', field: 'CreatedDate'},
+        {headerName: 'Title', field: 'Title'},
+        {headerName: 'Company', field: 'CompanyName'},
+        {headerName: 'Hiring Manager', field: ''},
+        {headerName: 'Location', field: 'Location'},
+        {headerName: 'Status', field: 'JobStatus'},
+    ];
 
-        ];
-        this.gridOptions.rowData = [
-             {make: 'Toyota', model: 'Celica', price: 35000},
-        {make: 'Ford', model: 'Mondeo', price: 32000},
-        {make: 'Porsche', model: 'Boxter', price: 72000}
-        ]
+      
+        // this.gridOptions.rowData = [
+        //      {make: 'Toyota', model: 'Celica', price: 35000},
+        // {make: 'Ford', model: 'Mondeo', price: 32000},
+        // {make: 'Porsche', model: 'Boxter', price: 72000}
+        // ]
+    }
+
+    ngOnInit() {
+        fetch('https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo')
+            .then(result => result.json())
+            .then(rowData => this.gridOptions.rowData = rowData);
     }
 
 }
