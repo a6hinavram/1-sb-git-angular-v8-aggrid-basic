@@ -8,6 +8,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
 
+  private gridApi;
+  private gridColumnApi;
+
+  private columnDefs;
+  private defaultColDef;
+  private rowData: [];
+
     private gridOptions: GridOptions;
 
     constructor(private http: HttpClient) {
@@ -28,21 +35,20 @@ export class AppComponent {
         {headerName: 'Location', field: 'Location'},
         {headerName: 'Status', field: 'JobStatus'},
     ];
-
-    this.http.get<any>('https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo').subscribe({
-            next: data => {
-                this.gridOptions.rowData = data[0];
-                console.log(this.gridOptions.rowData);
-            },
-            error: error => {
-                //this.errorMessage = error.message;
-                console.error('There was an error!', error);
-            }
-        })
     }
 
-   ngOnInit() {
-        
-    }
+
+    onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+
+    this.http
+      .get(
+        'https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo'
+      )
+      .subscribe((data) => {
+        this.rowData = data;
+      });
+  }
 
 }
