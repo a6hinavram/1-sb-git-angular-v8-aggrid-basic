@@ -18,7 +18,7 @@ export class AppComponent {
        
         // Column Defs
         this.gridOptions.columnDefs = [
-                {headerName: '', field: ''},
+        {headerName: '', field: ''},
         {headerName: 'JobID', field: 'JobID'},
         {headerName: 'Date', field: 'CreatedDate'},
         {headerName: 'Title', field: 'Title'},
@@ -28,6 +28,9 @@ export class AppComponent {
         {headerName: 'Status', field: 'JobStatus'},
     ];
 
+ fetch('https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo')
+            .then(result => result.json())
+            .then(rowData => this.gridOptions.rowData = rowData);
       
         // this.gridOptions.rowData = [
         //      {make: 'Toyota', model: 'Celica', price: 35000},
@@ -37,9 +40,7 @@ export class AppComponent {
     }
 
     ngOnInit() {
-        fetch('https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo')
-            .then(result => result.json())
-            .then(rowData => this.gridOptions.rowData = rowData);
+       
     }
 
 }
