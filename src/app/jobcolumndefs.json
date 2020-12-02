@@ -74,8 +74,7 @@
    {
       "headerName":"Date",
       "field":"CreatedDate",
-      "resizable":true,
-      "valueFormatter": "bracketsFormatter",
+      "resizable":true
    },
    {
       "headerName":"Hiring Manager",
