@@ -36,21 +36,11 @@ export class AppComponent {
     // Column Defs
     
 
-     if (this.browserWidth <= 480) {
-               this.gridOptions.columnDefs = this.mobileColumn;
-                //this.params.api.sizeColumnsToFit();
-            }else{
-this.gridOptions.columnDefs = [
-      { headerName: "", field: "" },
-      { headerName: "JobID", field: "JobID" },
-      { headerName: "Date", field: "CreatedDate" },
-      { headerName: "Title", field: "Title" },
-      { headerName: "Company", field: "CompanyName" },
-      { headerName: "Hiring Manager", field: "" },
-      { headerName: "Location", field: "Location" },
-      { headerName: "Status", field: "JobStatus" }
+  this.gridOptions.columnDefs = [
+       { headerName: 'Make', field: 'make' },
+  { headerName: 'Model', field: 'model' },
+  { headerName: 'Price', field: 'price' }
     ];
-            }
 
     
 
@@ -60,19 +50,6 @@ this.gridOptions.columnDefs = [
 
     
   }
-
-  onWindowResize(event) {
-        this.browserWidth = event.target.innerWidth;
-        this.browserHeight = event.target.innerHeight;
-
-         setTimeout(function () {
-            if (window.innerWidth <= 480) {
-                this.gridOptions.setColumnDefs(this.mobileColumn);
-                this.params.api.sizeColumnsToFit();
-            }
-        })
-    }
-
 
   sizeToFit() {
     this.gridApi.sizeColumnsToFit();
@@ -93,12 +70,10 @@ this.gridOptions.columnDefs = [
 
     this.sizeToFit();
 
-    this.http
-      .get(
-        "https://hiringmanagerwebapi.azurewebsites.net/api/job/GetAllJobsInfo"
-      )
-      .subscribe(data => {
-        this.rowData = data;
-      });
+    this.rowData = [
+  { make: 'Toyota', model: 'Celica', price: 35000 },
+  { make: 'Ford', model: 'Mondeo', price: 32000 },
+  { make: 'Porsche', model: 'Boxter', price: 72000 }
+];
   }
 }
