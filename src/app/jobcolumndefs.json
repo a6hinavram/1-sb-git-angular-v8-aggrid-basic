@@ -40,7 +40,8 @@
 [
    {
       "headerName":"",
-      "field":""
+      "field":"",
+      "pinned":"left"
    },
    {
       "headerName":"JobID",
@@ -82,14 +83,16 @@
    {
       "headerName":"Status",
       "field":"JobStatus",
-      "resizable":true
+      "resizable":true,
+      "sortable": true
    }
 ],
 "colDefExcluded" :
 [
    {
       "headerName":"",
-      "field":""
+      "field":"",
+      "pinned":"left"
    },
    {
       "headerName":"JobID",
@@ -122,7 +125,8 @@
    {
       "headerName":"Status",
       "field":"JobStatus",
-      "resizable":true
+      "resizable":true,
+      "sortable": true
    }
 ],
 "mobileDef": [

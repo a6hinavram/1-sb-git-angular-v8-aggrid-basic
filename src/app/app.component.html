@@ -2,7 +2,13 @@
  <div class
  ="test-header">
       <button (click)="onBtExcludeMedalColumns()">Exclude Location, HM Columns</button>
-      <button (click)="onBtIncludeMedalColumns()">Include Location, HM </button>
+      <button (click)="onBtIncludeMedalColumns()">Include Location, HM Columns</button>
+    </div>
+    <br>
+
+     <div class="example-header">
+      Selection:
+      <span id="selectedRows"></span>
     </div>
    
     <ag-grid-angular 
@@ -11,6 +17,8 @@
      [rowData]="rowData"
         (gridReady)="onGridReady($event)"
         [defaultColDef]="defaultColDef"
+        [rowSelection]="rowSelection"
+        (selectionChanged)="onSelectionChanged($event)"
     
     >
     </ag-grid-angular>

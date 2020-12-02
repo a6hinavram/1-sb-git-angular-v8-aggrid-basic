@@ -17,6 +17,7 @@ export class AppComponent {
   private columnDefs;
   private defaultColDef;
   private rowData: [];
+  private rowSelection;
   private jsonData = exampleData;
 
   // public mobileColumn = [{ headerName: "JobID", field: "JobID" },
@@ -50,6 +51,8 @@ export class AppComponent {
         resizable: true,
         width: 20
       };
+
+      this.rowSelection = 'single';
     }
 
     
@@ -100,9 +103,17 @@ export class AppComponent {
 
   onBtExcludeMedalColumns() {
     this.gridApi.setColumnDefs(this.jsonData['colDefExcluded']);
+    this.sizeToFit();
   }
 
   onBtIncludeMedalColumns() {
     this.gridApi.setColumnDefs(this.jsonData['colDef1']);
+    this.sizeToFit();
+  }
+
+  onSelectionChanged() {
+    var selectedRows = this.gridApi.getSelectedRows();
+    document.querySelector('#selectedRows').innerHTML =
+      selectedRows.length === 1 ? selectedRows[0].athlete : '';
   }
 }
