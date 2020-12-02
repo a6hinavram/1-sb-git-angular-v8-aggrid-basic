@@ -36,7 +36,8 @@ export class AppComponent {
 
     // Column Defs
     this.gridOptions.columnDefs = [
-      { headerName: "Make", field: "make" },
+      { headerName: "Make", field: "make", valueGetter: demoValueGetter },
+      { headerName: "Make", field: "make", valueFormatter: bracketsFormatter,},
       { headerName: "Model", field: "model" },
       { headerName: "Price", field: "price" }
     ];
@@ -60,4 +61,12 @@ export class AppComponent {
       { make: "Porsche", model: "Boxter", price: 72000 }
     ];
   }
+}
+
+var demoValueGetter = function (params) {
+  return params.node.rowIndex + 1;
+};
+
+function bracketsFormatter(params) {
+  return '(<b>' + params.value + '</b>)';
 }
