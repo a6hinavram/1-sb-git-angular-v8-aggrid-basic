@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { GridOptions } from "ag-grid";
 import { HttpClient } from "@angular/common/http";
+import { CurrencyRenderer } from './currency-renderer.component';
 
 @Component({
   selector: "app-root",
@@ -16,6 +17,7 @@ export class AppComponent {
   private columnDefs;
   private defaultColDef;
   private rowData: [];
+  private frameworkComponents;
 
   public mobileColumn = [
     { headerName: "JobID", field: "JobID" },
@@ -39,11 +41,15 @@ export class AppComponent {
       { headerName: "Make", field: "make", valueGetter: demoValueGetter },
       { headerName: "Make", field: "make", valueFormatter: bracketsFormatter,},
       { headerName: "Model", field: "model" },
-      { headerName: "Price", field: "price" }
+      { headerName: "Price", field: "price", cellRenderer: 'currencyRenderer', }
     ];
 
     this.gridOptions.pagination = true;
     this.gridOptions.skipHeaderOnAutoSize = true;
+
+     this.frameworkComponents = {
+      currencyRenderer: CurrencyRenderer
+    };
   }
 
   sizeToFit() {
