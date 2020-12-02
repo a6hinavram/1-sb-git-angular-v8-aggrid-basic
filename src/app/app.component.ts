@@ -40,10 +40,10 @@ export class AppComponent {
     // Column Defs
 
     if (this.browserWidth <= 480) {
-      this.gridOptions.columnDefs = this.jsonData['mobileDef'];;
+      this.gridOptions.columnDefs = this.jsonData['colDef1'];
       //this.params.api.sizeColumnsToFit();
     } else {
-      this.gridOptions.columnDefs = this.jsonData['defaultColumns'];
+      this.gridOptions.columnDefs = this.jsonData['colDef1'];
 
       this.defaultColDef = {
         sortable: true,
