@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrencyRenderer } from './currency-renderer.component';
+import { HtmlRender } from './html-render.component';
 
 @NgModule({
   imports: [
@@ -14,12 +15,14 @@ import { CurrencyRenderer } from './currency-renderer.component';
     HttpClientModule,
     AgGridModule.withComponents([
       CurrencyRenderer,
+      HtmlRender
       
     ]),
   ],
   declarations: [
     AppComponent,
-    CurrencyRenderer
+    CurrencyRenderer,
+    HtmlRender
 
   ],
   bootstrap: [ AppComponent ]

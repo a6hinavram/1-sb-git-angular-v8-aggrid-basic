@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { GridOptions } from "ag-grid";
 import { HttpClient } from "@angular/common/http";
 import { CurrencyRenderer } from './currency-renderer.component';
+import { HtmlRender } from './html-render.component';
 
 @Component({
   selector: "app-root",
@@ -41,14 +42,16 @@ export class AppComponent {
       { headerName: "Make", field: "make", valueGetter: demoValueGetter },
       { headerName: "Make", field: "make", valueFormatter: bracketsFormatter,},
       { headerName: "Model", field: "model" },
-      { headerName: "Price", field: "price", cellRenderer: 'currencyRenderer', }
+      { headerName: "Price", field: "price", cellRenderer: 'currencyRenderer', },
+      { headerName: "Price1", field: "price", cellRenderer: 'HtmlRender', }
     ];
 
     this.gridOptions.pagination = true;
     this.gridOptions.skipHeaderOnAutoSize = true;
 
      this.frameworkComponents = {
-      currencyRenderer: CurrencyRenderer
+      currencyRenderer: CurrencyRenderer,
+      HtmlRender: HtmlRender
     };
   }
 
