@@ -118,14 +118,9 @@ export class AppComponent {
     document.querySelector('#selectedRows').innerHTML =
       selectedRows.length === 1 ? selectedRows[0].Title : '';
   }
+ 
+}
 
-  bracketsFormatter(params) {
+ function bracketsFormatter(params) {
   return '(' + params.value + ')';
- }
-
-  
-
-
-
-  
 }
