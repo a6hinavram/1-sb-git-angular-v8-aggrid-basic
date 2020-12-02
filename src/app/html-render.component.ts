@@ -28,9 +28,7 @@ export class HtmlRender implements ICellRendererAngularComp {
   }
 
   public invokeParentMethod() {
-    this.params.context.componentParent.methodFromParent(
-      `Row: ${this.params.node.rowIndex}, Col: ${this.params.colDef.headerName}`
-    );
+    console.log(this.params.value);
   }
 
   refresh(): boolean {
