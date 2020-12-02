@@ -24,30 +24,13 @@ export class AppComponent {
   //     { headerName: "Company", field: "CompanyName" },
   //     { headerName: "Status", field: "JobStatus" }];
 
-  public mobileColumn = [
-    { headerName: "JobID", field: "JobID" },
-
-    {
-      headerName: "Job",
-      children: [
-        { headerName: "Title", field: "Title", columnGroupShow: "open" },
-        {
-          headerName: "Company",
-          field: "CompanyName",
-          columnGroupShow: "closed"
-        },
-        { headerName: "Location", field: "Location", columnGroupShow: "closed" }
-      ]
-    },
-    { headerName: "Status", field: "JobStatus" }
-  ];
 
   private gridOptions: GridOptions;
   browserWidth: number = window.innerWidth;
   browserHeight: number = window.innerHeight;
 
   constructor(private http: HttpClient) {
-    console.log(this.jsonData['colDef1']);
+  
     this.gridOptions = <GridOptions>{
       enableSorting: true,
       // enable filtering
@@ -57,7 +40,7 @@ export class AppComponent {
     // Column Defs
 
     if (this.browserWidth <= 480) {
-      this.gridOptions.columnDefs = this.mobileColumn;
+      this.gridOptions.columnDefs = this.jsonData['mobileDef'];;
       //this.params.api.sizeColumnsToFit();
     } else {
       this.gridOptions.columnDefs = this.jsonData['defaultColumns'];
