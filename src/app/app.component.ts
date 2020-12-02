@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { GridOptions } from "ag-grid";
 import { HttpClient } from "@angular/common/http";
 import * as exampleData from './jobcolumndefs.json';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 @Component({
   selector: "app-root",
@@ -19,6 +20,7 @@ export class AppComponent {
   private rowData: [];
   private rowSelection;
   private jsonData = exampleData;
+  public modules: Module[] = [ClientSideRowModelModule];
 
   // public mobileColumn = [{ headerName: "JobID", field: "JobID" },
   //     { headerName: "Title", field: "Title" },
@@ -114,6 +116,12 @@ export class AppComponent {
   onSelectionChanged() {
     var selectedRows = this.gridApi.getSelectedRows();
     document.querySelector('#selectedRows').innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].athlete : '';
+      selectedRows.length === 1 ? selectedRows[0].Title : '';
   }
+
+  function bracketsFormatter(params) {
+  return '(' + params.value + ')';
+}
+
+  
 }

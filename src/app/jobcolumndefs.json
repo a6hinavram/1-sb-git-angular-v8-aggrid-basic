@@ -41,7 +41,8 @@
    {
       "headerName":"",
       "field":"",
-      "pinned":"left"
+      "pinned":"left",
+      "checkboxSelection": true
    },
    {
       "headerName":"JobID",
@@ -73,7 +74,8 @@
    {
       "headerName":"Date",
       "field":"CreatedDate",
-      "resizable":true
+      "resizable":true,
+      "valueFormatter": "bracketsFormatter",
    },
    {
       "headerName":"Hiring Manager",
