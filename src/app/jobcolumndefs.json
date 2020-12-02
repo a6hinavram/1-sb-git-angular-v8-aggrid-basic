@@ -110,12 +110,8 @@
             "headerName":"Company",
             "field":"CompanyName",
             "columnGroupShow":"closed"
-         },
-        //  {
-        //     "headerName":"Location",
-        //     "field":"Location",
-        //     "columnGroupShow":"closed"
-        //  }
+         }
+  
       ]
    },
    {
@@ -123,11 +119,6 @@
       "field":"CreatedDate",
       "resizable":true
    },
-  //  {
-  //     "headerName":"Hiring Manager",
-  //     "field":"",
-  //     "resizable":true
-  //  },
    {
       "headerName":"Status",
       "field":"JobStatus",
