@@ -119,9 +119,13 @@ export class AppComponent {
       selectedRows.length === 1 ? selectedRows[0].Title : '';
   }
 
-//   function bracketsFormatter(params) {
-//   return '(' + params.value + ')';
-// }
+  bracketsFormatter(params) {
+  return '(' + params.value + ')';
+ }
+
+  
+
+
 
   
 }
