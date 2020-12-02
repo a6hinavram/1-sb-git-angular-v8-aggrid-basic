@@ -50,6 +50,36 @@
       "field":"JobStatus",
       "resizable":true
    }
+],
+"mobileDef": [
+   {
+      "headerName":"JobID",
+      "field":"JobID"
+   },
+   {
+      "headerName":"Job",
+      "children":[
+         {
+            "headerName":"Title",
+            "field":"Title",
+            "columnGroupShow":"open"
+         },
+         {
+            "headerName":"Company",
+            "field":"CompanyName",
+            "columnGroupShow":"closed"
+         },
+         {
+            "headerName":"Location",
+            "field":"Location",
+            "columnGroupShow":"closed"
+         }
+      ]
+   },
+   {
+      "headerName":"Status",
+      "field":"JobStatus"
+   }
 ]
 
 }
