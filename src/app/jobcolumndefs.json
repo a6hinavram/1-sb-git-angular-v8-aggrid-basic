@@ -2,7 +2,7 @@
 "Post": "Angular Json Files",
 "CanEdit": true,
 "Version": 7,
-"colDef" :
+"colDef1" :
 [
         { headerName: "", field: "" },
         {
@@ -32,5 +32,5 @@
         { headerName: "Date", field: "CreatedDate", resizable: true },
         { headerName: "Hiring Manager", field: "", resizable: true },
         { headerName: "Status", field: "JobStatus", resizable: true }
-      ];
+      ],
 }

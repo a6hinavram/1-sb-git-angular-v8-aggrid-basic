@@ -60,36 +60,7 @@ export class AppComponent {
       this.gridOptions.columnDefs = this.mobileColumn;
       //this.params.api.sizeColumnsToFit();
     } else {
-      this.gridOptions.columnDefs = [
-        { headerName: "", field: "" },
-        {
-          headerName: "JobID",
-          field: "JobID",
-          resizable: true,
-          pinned: "left",
-          filter: "agTextColumnFilter",
-          floatingFilter: true
-        },
-        {
-          headerName: "Job",
-          children: [
-            { headerName: "Title", field: "Title" },
-            {
-              headerName: "Company",
-              field: "CompanyName",
-              columnGroupShow: "closed"
-            },
-            {
-              headerName: "Location",
-              field: "Location",
-              columnGroupShow: "closed"
-            }
-          ]
-        },
-        { headerName: "Date", field: "CreatedDate", resizable: true },
-        { headerName: "Hiring Manager", field: "", resizable: true },
-        { headerName: "Status", field: "JobStatus", resizable: true }
-      ];
+      this.gridOptions.columnDefs = this.jsonData['colDef1']
 
       this.defaultColDef = {
         sortable: true,
