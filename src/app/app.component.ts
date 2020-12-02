@@ -47,7 +47,7 @@ export class AppComponent {
   browserHeight: number = window.innerHeight;
 
   constructor(private http: HttpClient) {
-    console.log(this.jsonData);
+    console.log(this.jsonData['colDef1']);
     this.gridOptions = <GridOptions>{
       enableSorting: true,
       // enable filtering
@@ -60,7 +60,7 @@ export class AppComponent {
       this.gridOptions.columnDefs = this.mobileColumn;
       //this.params.api.sizeColumnsToFit();
     } else {
-      this.gridOptions.columnDefs = this.jsonData['colDef1']
+      this.gridOptions.columnDefs = this.jsonData['colDef1'];
 
       this.defaultColDef = {
         sortable: true,
