@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { GridOptions } from "ag-grid";
 import { HttpClient } from "@angular/common/http";
+import * as exampleData from './jobcolumndefs.json';
 
 @Component({
   selector: "app-root",
@@ -16,6 +17,7 @@ export class AppComponent {
   private columnDefs;
   private defaultColDef;
   private rowData: [];
+  private jsonData = exampleData;
 
   // public mobileColumn = [{ headerName: "JobID", field: "JobID" },
   //     { headerName: "Title", field: "Title" },
@@ -45,6 +47,7 @@ export class AppComponent {
   browserHeight: number = window.innerHeight;
 
   constructor(private http: HttpClient) {
+    console.log(this.jsonData);
     this.gridOptions = <GridOptions>{
       enableSorting: true,
       // enable filtering
@@ -94,6 +97,8 @@ export class AppComponent {
         width: 20
       };
     }
+
+    
 
     this.gridOptions.pagination = true;
 
