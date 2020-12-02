@@ -60,7 +60,7 @@ export class AppComponent {
       this.gridOptions.columnDefs = this.mobileColumn;
       //this.params.api.sizeColumnsToFit();
     } else {
-      this.gridOptions.columnDefs = this.jsonData['mobileDef'];
+      this.gridOptions.columnDefs = this.jsonData['defaultColumns'];
 
       this.defaultColDef = {
         sortable: true,
