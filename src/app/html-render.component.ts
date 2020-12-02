@@ -9,7 +9,7 @@ import { ICellRendererAngularComp } from '@ag-grid-community/angular';
       (click)="invokeParentMethod()"
       class="btn btn-info"
     >
-      Invoke Parent
+      Test Button
     </button></span
   >`,
   styles: [
