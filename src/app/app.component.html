@@ -6,10 +6,11 @@
     [gridOptions]="gridOptions"
      [rowData]="rowData"
         (gridReady)="onGridReady($event)"
+        [defaultColDef]="defaultColDef"
     
     >
     </ag-grid-angular>
 </div>
 
 
-<!-- {{this.gridOptions.rowData[0] | json}} -->
+<!-- {{this.gridOptions.rowData[0] | json}} --> 

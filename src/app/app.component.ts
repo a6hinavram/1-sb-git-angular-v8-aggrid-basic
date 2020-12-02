@@ -5,9 +5,9 @@ import { HttpClient } from "@angular/common/http";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-   host: {
-        "(window:resize)":"onWindowResize($event)"
-    }
+  host: {
+    "(window:resize)": "onWindowResize($event)"
+  }
 })
 export class AppComponent {
   private gridApi;
@@ -17,14 +17,32 @@ export class AppComponent {
   private defaultColDef;
   private rowData: [];
 
-  public mobileColumn = [{ headerName: "JobID", field: "JobID" },
-      { headerName: "Title", field: "Title" },
-      { headerName: "Company", field: "CompanyName" },
-      { headerName: "Status", field: "JobStatus" }];
+  // public mobileColumn = [{ headerName: "JobID", field: "JobID" },
+  //     { headerName: "Title", field: "Title" },
+  //     { headerName: "Company", field: "CompanyName" },
+  //     { headerName: "Status", field: "JobStatus" }];
+
+  public mobileColumn = [
+    { headerName: "JobID", field: "JobID" },
+
+    {
+      headerName: "Job",
+      children: [
+        { headerName: "Title", field: "Title", columnGroupShow: "open" },
+        {
+          headerName: "Company",
+          field: "CompanyName",
+          columnGroupShow: "closed"
+        },
+        { headerName: "Location", field: "Location", columnGroupShow: "closed" }
+      ]
+    },
+    { headerName: "Status", field: "JobStatus" }
+  ];
 
   private gridOptions: GridOptions;
   browserWidth: number = window.innerWidth;
-    browserHeight: number = window.innerHeight;
+  browserHeight: number = window.innerHeight;
 
   constructor(private http: HttpClient) {
     this.gridOptions = <GridOptions>{
@@ -34,45 +52,65 @@ export class AppComponent {
     };
 
     // Column Defs
-    
 
-     if (this.browserWidth <= 480) {
-               this.gridOptions.columnDefs = this.mobileColumn;
-                //this.params.api.sizeColumnsToFit();
-            }else{
-this.gridOptions.columnDefs = [
-      { headerName: "", field: "" },
-      { headerName: "JobID", field: "JobID" },
-      { headerName: "Date", field: "CreatedDate" },
-      { headerName: "Title", field: "Title" },
-      { headerName: "Company", field: "CompanyName" },
-      { headerName: "Hiring Manager", field: "" },
-      { headerName: "Location", field: "Location" },
-      { headerName: "Status", field: "JobStatus" }
-    ];
+    if (this.browserWidth <= 480) {
+      this.gridOptions.columnDefs = this.mobileColumn;
+      //this.params.api.sizeColumnsToFit();
+    } else {
+      this.gridOptions.columnDefs = [
+        { headerName: "", field: "" },
+        {
+          headerName: "JobID",
+          field: "JobID",
+          resizable: true,
+          pinned: "left",
+          filter: "agTextColumnFilter",
+          floatingFilter: true
+        },
+        {
+          headerName: "Job",
+          children: [
+            { headerName: "Title", field: "Title" },
+            {
+              headerName: "Company",
+              field: "CompanyName",
+              columnGroupShow: "closed"
+            },
+            {
+              headerName: "Location",
+              field: "Location",
+              columnGroupShow: "closed"
             }
+          ]
+        },
+        { headerName: "Date", field: "CreatedDate", resizable: true },
+        { headerName: "Hiring Manager", field: "", resizable: true },
+        { headerName: "Status", field: "JobStatus", resizable: true }
+      ];
 
-    
+      this.defaultColDef = {
+        sortable: true,
+        resizable: true,
+        width: 20
+      };
+    }
 
-   this.gridOptions.pagination = true;
+    this.gridOptions.pagination = true;
 
-   this.gridOptions.skipHeaderOnAutoSize = true;
-
-    
+    this.gridOptions.skipHeaderOnAutoSize = true;
   }
 
   onWindowResize(event) {
-        this.browserWidth = event.target.innerWidth;
-        this.browserHeight = event.target.innerHeight;
+    this.browserWidth = event.target.innerWidth;
+    this.browserHeight = event.target.innerHeight;
 
-         setTimeout(function () {
-            if (window.innerWidth <= 480) {
-                this.gridOptions.setColumnDefs(this.mobileColumn);
-                this.params.api.sizeColumnsToFit();
-            }
-        })
-    }
-
+    setTimeout(function() {
+      if (window.innerWidth <= 480) {
+        this.gridOptions.setColumnDefs(this.mobileColumn);
+        this.params.api.sizeColumnsToFit();
+      }
+    });
+  }
 
   sizeToFit() {
     this.gridApi.sizeColumnsToFit();
@@ -80,12 +118,11 @@ this.gridOptions.columnDefs = [
 
   autoSizeAll(skipHeader) {
     var allColumnIds = [];
-    this.gridColumnApi.getAllColumns().forEach(function (column) {
+    this.gridColumnApi.getAllColumns().forEach(function(column) {
       allColumnIds.push(column.colId);
     });
     this.gridColumnApi.autoSizeColumns(allColumnIds, skipHeader);
   }
-
 
   onGridReady(params) {
     this.gridApi = params.api;
