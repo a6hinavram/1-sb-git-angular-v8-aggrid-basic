@@ -97,4 +97,12 @@ export class AppComponent {
         this.rowData = data;
       });
   }
+
+  onBtExcludeMedalColumns() {
+    this.gridApi.setColumnDefs(this.jsonData['colDefExcluded']);
+  }
+
+  onBtIncludeMedalColumns() {
+    this.gridApi.setColumnDefs(this.jsonData['colDef1']);
+  }
 }
