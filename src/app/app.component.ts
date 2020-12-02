@@ -13,9 +13,6 @@ import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css';
       class="ag-theme-alpine"
       [modules]="modules"
       [columnDefs]="columnDefs"
-      [defaultColDef]="defaultColDef"
-      [defaultColGroupDef]="defaultColGroupDef"
-      [columnTypes]="columnTypes"
       [rowData]="rowData"
       (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
@@ -30,7 +27,7 @@ export class AppComponent {
   private defaultColDef;
   private defaultColGroupDef;
   private columnTypes;
-  private rowData: [];
+  public rowData: [];
 
   constructor() {
     this.columnDefs = [
