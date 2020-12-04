@@ -8,6 +8,7 @@ import {GridOptions} from "ag-grid";
 export class AppComponent {
 
     private gridOptions: GridOptions;
+    quickSearchValue: string = '';
 
     constructor() {
         this.gridOptions = <GridOptions>{
@@ -27,5 +28,9 @@ export class AppComponent {
         {make: 'Porsche', model: 'Boxter', price: 72000}
         ]
     }
+
+    onQuickFilterChanged() {
+    this.gridOptions.api.setQuickFilter(this.quickSearchValue);
+}
 
 }
