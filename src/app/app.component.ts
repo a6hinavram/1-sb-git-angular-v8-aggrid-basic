@@ -16,6 +16,7 @@ export class AppComponent {
   private columnDefs;
   private defaultColDef;
   private rowData: [];
+  public saved_state1;
 
   public mobileColumn = [
     { headerName: "JobID", field: "JobID" },
@@ -59,5 +60,31 @@ export class AppComponent {
       { make: "Ford", model: "Mondeo", price: 32000 },
       { make: "Porsche", model: "Boxter", price: 72000 }
     ];
+  }
+
+   saveState() {
+     // save the columns state
+    this.saved_state1 = this.gridColumnApi.getColumnState();
+
+    //window.colState = this.gridColumnApi.getColumnState();
+    console.log('column state saved');
+    console.log(this.saved_state1);
+  }
+
+  restoreState() {
+    if (!this.saved_state1) {
+      console.log('no columns state to restore by, you must save state first');
+      return;
+    }
+    this.gridColumnApi.applyColumnState({
+      state: this.saved_state1,
+      applyOrder: true,
+    });
+    console.log('column state restored');
+  }
+
+  resetState() {
+    this.gridColumnApi.resetColumnState();
+    console.log('column state reset');
   }
 }
