@@ -4,10 +4,7 @@ import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-root",
-  templateUrl: "./app.component.html",
-  host: {
-    "(window:resize)": "onWindowResize($event)"
-  }
+  templateUrl: "./app.component.html"
 })
 export class AppComponent {
   private gridApi;
@@ -32,12 +29,12 @@ export class AppComponent {
   constructor(private http: HttpClient) {
     this.gridOptions = <GridOptions>{
       enableSorting: true,
-        enableFilter: true
+      enableFilter: true
     };
 
     // Column Defs
     this.gridOptions.columnDefs = [
-      { headerName: "Make", field: "make" },
+      { headerName: "Make", field: "make", filter:true },
       { headerName: "Model", field: "model" },
       { headerName: "Price", field: "price" }
     ];
@@ -62,29 +59,29 @@ export class AppComponent {
     ];
   }
 
-   saveState() {
-     // save the columns state
+  saveState() {
+    // save the columns state
     this.saved_state1 = this.gridColumnApi.getColumnState();
 
     //window.colState = this.gridColumnApi.getColumnState();
-    console.log('column state saved');
+    console.log("column state saved");
     console.log(this.saved_state1);
   }
 
   restoreState() {
     if (!this.saved_state1) {
-      console.log('no columns state to restore by, you must save state first');
+      console.log("no columns state to restore by, you must save state first");
       return;
     }
     this.gridColumnApi.applyColumnState({
       state: this.saved_state1,
-      applyOrder: true,
+      applyOrder: true
     });
-    console.log('column state restored');
+    console.log("column state restored");
   }
 
   resetState() {
     this.gridColumnApi.resetColumnState();
-    console.log('column state reset');
+    console.log("column state reset");
   }
 }
