@@ -16,7 +16,7 @@ export class AppComponent {
           enableFilter: true
         };
         this.gridOptions.columnDefs = [
-           {headerName: 'Make', field: 'make', resizable: true},
+           {headerName: 'Make', field: 'make', filter: true},
         {headerName: 'Model', field: 'model'},
         {headerName: 'Price', field: 'price'}
 
@@ -27,5 +27,21 @@ export class AppComponent {
         {make: 'Porsche', model: 'Boxter', price: 72000}
         ]
     }
+
+    onBtFilterOn() {
+    var columnDefs = getColumnDefs();
+    columnDefs.forEach(function (c) {
+      c.filter = true;
+    });
+    this.gridApi.setColumnDefs(columnDefs);
+  }
+
+  onBtFilterOff() {
+    var columnDefs = getColumnDefs();
+    columnDefs.forEach(function (c) {
+      c.filter = false;
+    });
+    this.gridApi.setColumnDefs(columnDefs);
+  }
 
 }
