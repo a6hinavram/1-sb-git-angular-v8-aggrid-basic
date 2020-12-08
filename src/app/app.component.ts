@@ -34,7 +34,7 @@ export class AppComponent {
 
     // Column Defs
     this.gridOptions.columnDefs = [
-      { headerName: "Make", field: "make", filter:true },
+      { headerName: "Make", field: "make", filter:true ,},
       { headerName: "Model", field: "model" },
       { headerName: "Price", field: "price" }
     ];
@@ -65,7 +65,13 @@ export class AppComponent {
 
     //window.colState = this.gridColumnApi.getColumnState();
     console.log("column state saved");
-    console.log(this.saved_state1);
+    //console.log(this.saved_state1);
+    console.log(this.gridOptions.api.getFilterModel());
+
+    //console.log(JSON.stringify(gridOptions.columnApi.getColumnState()));
+    //console.log(JSON.stringify(gridOptions.api.getFilterModel()));
+    //console.log(JSON.stringify(gridOptions.api.getSortModel()));
+
   }
 
   restoreState() {
