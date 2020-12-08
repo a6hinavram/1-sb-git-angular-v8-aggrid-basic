@@ -15,17 +15,30 @@ export class AppComponent {
       // enable filtering 
       enableFilter: true
     };
+   
+   
     this.gridOptions.columnDefs = [
       {
         headerName: 'Group A',
         children: [
-          { headerName: 'Make', field: 'make', resizable: true },
+          { headerName: 'Make', field: 'make', resizable: true,filter:true },
           { headerName: 'Model', field: 'model' },
         ]
       },
       { headerName: 'Price', field: 'price' },
 
     ];
+
+    this.gridOptions.defaultColDef = {
+      // set every column width
+        width: 100,
+        // make every column editable
+        editable: true,
+        // make every column use 'text' filter by default
+        filter: 'agTextColumnFilter'
+    }
+
+
     this.gridOptions.rowData = [
       { make: 'Toyota', model: 'Celica', price: 35000 },
       { make: 'Ford', model: 'Mondeo', price: 32000 },
