@@ -16,17 +16,8 @@ export class AppComponent {
   private columnDefs;
   private defaultColDef;
   private rowData: [];
-
-  public mobileColumn = [
-    { headerName: "JobID", field: "JobID" },
-    { headerName: "Title", field: "Title" },
-    { headerName: "Company", field: "CompanyName" },
-    { headerName: "Status", field: "JobStatus" }
-  ];
-
   private gridOptions: GridOptions;
-  browserWidth: number = window.innerWidth;
-  browserHeight: number = window.innerHeight;
+ 
 
   constructor(private http: HttpClient) {
     this.gridOptions = <GridOptions>{
