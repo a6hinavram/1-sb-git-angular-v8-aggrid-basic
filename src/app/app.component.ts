@@ -4,10 +4,7 @@ import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-root",
-  templateUrl: "./app.component.html",
-  host: {
-    "(window:resize)": "onWindowResize($event)"
-  }
+  templateUrl: "./app.component.html"
 })
 export class AppComponent {
   private gridApi;
@@ -25,7 +22,14 @@ export class AppComponent {
         enableFilter: true
     };
 
-    // Column Defs
+    // Column 
+    
+    [
+      { headerName: "Make", field: "make" },
+      { headerName: "Model", field: "model" },
+      { headerName: "Price", field: "price" }
+    ];
+
     this.gridOptions.columnDefs = [
       { headerName: "Make", field: "make" },
       { headerName: "Model", field: "model" },
@@ -51,4 +55,38 @@ export class AppComponent {
       { make: "Porsche", model: "Boxter", price: 72000 }
     ];
   }
+
+
+  btnClick(): void {
+    const columns = this.gridOptions.columnApi.getAllColumns();
+    const valueColumn = columns.filter(column => column.getColDef().headerName === "Value")[0];
+    console.log(valueColumn);
+    
+    //const newState = !valueColumn.isVisible();
+    this.gridOptions.columnApi.setColumnVisible('make', false);
+    this.gridOptions.api.sizeColumnsToFit();
+  }
+
+  show = true;
+
+  showCheckboxes(): void { 
+            var checkboxes =  
+                document.getElementById("checkBoxes"); 
+  
+            if (this.show) { 
+                checkboxes.style.display = "block"; 
+                this.show = false; 
+            } else { 
+                checkboxes.style.display = "none"; 
+                this.show = true; 
+            } 
+        }
+
+        
+        testFun(event: Event, val: String){
+          console.log(event.target.checked);
+          this.gridOptions.columnApi.setColumnVisible(val, event.target.checked);
+          //alert(val);
+        } 
 }
+

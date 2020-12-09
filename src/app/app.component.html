@@ -1,5 +1,35 @@
 <div>
 
+<button type="button" (click)="btnClick()">Show Moddel</button>
+<button type="button" (click)="btnClick()">Hide Moddel</button>
+
+
+<div class="multipleSelection"> 
+            <div class="selectBox" 
+                (click)="showCheckboxes()"> 
+                <select> 
+                    <option>Select options</option> 
+                </select> 
+                <div class="overSelect"></div> 
+            </div> 
+  
+            <div id="checkBoxes"> 
+                <label for="first"> 
+                    <input (change)="testFun($event,'make')" type="checkbox" id="first" checked /> 
+                    Make 
+                </label> 
+                  
+                <label for="second"> 
+                    <input (change)="testFun($event,'model')" type="checkbox" id="second" checked /> 
+                    Model 
+                </label> 
+                <label for="third"> 
+                    <input (change)="testFun($event,'price')" type="checkbox" id="third" checked /> 
+                    Price
+                </label> 
+              
+            </div> 
+        </div> 
    
     <ag-grid-angular 
     #agGrid style="width: 100%; height: 300px;" class="ag-theme-balham" 
