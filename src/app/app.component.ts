@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
 import { NumberFormatterComponent } from "./number-formatter.component";
 
+import {DisplayRecordComponent} from './displayrecord.component';
+
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html"
@@ -21,11 +24,20 @@ export class AppComponent {
         return params.data.price + 1;
       },
       cellRenderer: "numberFormatterComponent"
+    },
+     {
+      headerName: "recorddebug",
+      field: "make",
+      valueGetter: function(params) {
+        return params.data.make;
+      },
+      cellRenderer: "DisplayRecordComponent"
     }
   ];
 
   frameworkComponents = {
-    numberFormatterComponent: NumberFormatterComponent
+    numberFormatterComponent: NumberFormatterComponent,
+    DisplayRecordComponent: DisplayRecordComponent
   };
 
   rowData = [

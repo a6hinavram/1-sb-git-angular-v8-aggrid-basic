@@ -6,15 +6,17 @@ import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import {NumberFormatterComponent} from './number-formatter.component';
 
+import {DisplayRecordComponent} from './displayrecord.component';
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AgGridModule.withComponents([NumberFormatterComponent])
+    AgGridModule.withComponents([NumberFormatterComponent, DisplayRecordComponent])
   ],
   declarations: [
     AppComponent,
-    NumberFormatterComponent
+    NumberFormatterComponent,
+    DisplayRecordComponent
 
   ],
   bootstrap: [ AppComponent ]
