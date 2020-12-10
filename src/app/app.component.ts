@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { GridOptions } from "ag-grid";
+import { GridOptions } from 'ag-grid-community';
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -24,13 +24,18 @@ export class AppComponent {
 
     // Column 
     
-    [
-      { headerName: "Make", field: "make" },
-      { headerName: "Model", field: "model" },
-      { headerName: "Price", field: "price" }
-    ];
+    // [
+    //   { headerName: "Make", field: "make" },
+    //   { headerName: "Model", field: "model" },
+    //   { headerName: "Price", field: "price" }
+    // ];
 
     this.gridOptions.columnDefs = [
+      // {
+      //   headerName: '#',
+      //   maxWidth: 100,
+      //   valueGetter: hashValueGetter,
+      // },
       { headerName: "Make", field: "make" },
       { headerName: "Model", field: "model" },
       { headerName: "Price", field: "price" }
@@ -90,3 +95,6 @@ export class AppComponent {
         } 
 }
 
+var hashValueGetter = function (params) {
+  return params.node.rowIndex;
+};
