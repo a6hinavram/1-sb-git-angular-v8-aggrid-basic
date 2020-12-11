@@ -1,29 +1,92 @@
-<div>
- <div class
- ="test-header">
-      <button (click)="onBtExcludeMedalColumns()">Exclude Location, HM Columns</button>
-      <button (click)="onBtIncludeMedalColumns()">Include Location, HM Columns</button>
-    </div>
-    <br>
+<h1>Jobs</h1>
+<div fxLayout="row">
+  <div fxFlex="30">
+    <fieldset>
+      <legend>My Views:</legend>
+      <select [(ngModel)]="selectedView" (change)="showView()">
+        <option>Default View</option>
+        <option *ngFor="let item of savedViewNamesList">{{item}}</option>
+      </select>
+    </fieldset>
+  </div>
 
-     <div class="example-header">
-      Selection:
+  <div fxFlex="30">
+    <fieldset>
+      <legend>Create a View:</legend>
+      <label for="fname">View name:</label><br />
+      <input type="text" id="viewName" name="viewName" [(ngModel)]="viewName" />
+      &nbsp;&nbsp;<button (click)="saveView()">Save</button>
+    </fieldset>
+  </div>
+
+  <div fxFlex="30">
+    <fieldset>
+      <legend>Show / Hide Columns:</legend>
+      <span *ngFor="let item of columnsList">
+        <span *ngIf="item?.showCol">
+          <input
+            (change)="testFun($event,item?.field)"
+            type="checkbox"
+            id="first"
+            checked
+          />
+          {{item?.headerName}}
+          <br />
+        </span>
+      </span>
+    </fieldset>
+  </div>
+</div>
+
+<div>
+  <!-- <div class="test-header">
+		<button (click)="onBtExcludeMedalColumns()">Exclude Location, HM Columns</button>
+		<button (click)="onBtIncludeMedalColumns()">Include Location, HM Columns</button>
+	</div> -->
+
+  <br />
+
+  <!-- <div class="example-section">
+		<button (click)="saveState()">Save State</button>
+		<button (click)="restoreState()">Restore State</button>
+		<button (click)="resetState()">Reset State</button>
+	</div> -->
+
+  <br />
+
+  <div fxLayout="row">
+    <div fxFlex="40">
+      Selected:
       <span id="selectedRows"></span>
     </div>
-   
-    <ag-grid-angular 
-    #agGrid style="width: 100%; height: 300px;" class="ag-theme-balham" 
-    [gridOptions]="gridOptions"
-     [rowData]="rowData"
+    <div fxFlex="45"></div>
+    <div fxFlex="5">
+      <input
+        type="text"
+        (keyup)="onQuickFilterChanged()"
+        [(ngModel)]="quickSearchValue"
+        placeholder="Global Search"
+      />
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="100">
+      <ag-grid-angular
+        #agGrid
+        style="width: 100%; height: 300px;"
+        class="ag-theme-balham"
+        [gridOptions]="gridOptions"
+        [rowData]="rowData"
         (gridReady)="onGridReady($event)"
         [defaultColDef]="defaultColDef"
         [rowSelection]="rowSelection"
         (selectionChanged)="onSelectionChanged($event)"
-        [modules]="modules"
-    
-    >
-    </ag-grid-angular>
+        [suppressMenuHide]="true"
+      >
+      </ag-grid-angular>
+    </div>
+  </div>
 </div>
 
-
-<!-- {{this.gridOptions.rowData[0] | json}} --> 
+<!-- {{this.gridOptions.rowData[0] | json}} -->

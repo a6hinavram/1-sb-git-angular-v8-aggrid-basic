@@ -1,166 +1,157 @@
 {
-"Post": "Angular Json Files",
-"CanEdit": true,
-"Version": 7,
-"defaultColumns": [
-   {
-      "headerName":"",
-      "field":""
-   },
-   {
-      "headerName":"JobID",
-      "field":"JobID"
-   },
-   {
-      "headerName":"Date",
-      "field":"CreatedDate"
-   },
-   {
-      "headerName":"Title",
-      "field":"Title"
-   },
-   {
-      "headerName":"Company",
-      "field":"CompanyName"
-   },
-   {
-      "headerName":"Hiring Manager",
-      "field":""
-   },
-   {
-      "headerName":"Location",
-      "field":"Location"
-   },
-   {
-      "headerName":"Status",
-      "field":"JobStatus"
-   }
-],
-"colDef1" :
-[
-   {
-      "headerName":"",
-      "field":"",
-      "pinned":"left",
+  "Post": "Angular Json Files",
+  "CanEdit": true,
+  "Version": 7,
+  "defaultColumns": [
+    {
+      "headerName": "",
+      "field": ""
+    },
+    {
+      "headerName": "JobID",
+      "field": "JobID"
+    },
+    {
+      "headerName": "Date",
+      "field": "CreatedDate"
+    },
+    {
+      "headerName": "Title",
+      "field": "Title"
+    },
+    {
+      "headerName": "Company",
+      "field": "CompanyName"
+    },
+    {
+      "headerName": "Hiring Manager",
+      "field": ""
+    },
+    {
+      "headerName": "Location",
+      "field": "Location"
+    },
+    {
+      "headerName": "Status",
+      "field": "JobStatus"
+    }
+  ],
+  "colDef1": [
+    {
+      "headerName": "",
+      "field": "",
+    
       "checkboxSelection": true
-   },
-   {
-      "headerName":"JobID",
-      "field":"JobID",
-      "resizable":true,
-      "pinned":"left",
-      "filter":"agTextColumnFilter",
-      "floatingFilter":true,
-      "valueFormatter":"bracketsFormatter"
-   },
-   {
-      "headerName":"Job",
-      "children":[
-         {
-            "headerName":"Title",
-            "field":"Title"
-         },
-         {
-            "headerName":"Company",
-            "field":"CompanyName",
-            "columnGroupShow":"closed"
-         },
-         {
-            "headerName":"Location",
-            "field":"Location",
-            "columnGroupShow":"closed"
-         }
-      ]
-   },
-   {
-      "headerName":"Date",
-      "field":"CreatedDate",
-      "resizable":true,
-      "valueFormatter":"bracketsFormatter"
-   },
-   {
-      "headerName":"Hiring Manager",
-      "field":"",
-      "resizable":true
-   },
-   {
-      "headerName":"Status",
-      "field":"JobStatus",
-      "resizable":true,
+    },
+    {
+      "headerName": "JobID",
+      "field": "JobID",
+      "resizable": true,
+      "filter": "agTextColumnFilter",
+      "showCol": true
+    },
+    {
+      "headerName": "Title",
+      "field": "Title",
+      "showCol": true,
+      "filter": "agTextColumnFilter"
+    },
+    {
+      "headerName": "Company",
+      "field": "CompanyName",
+      "columnGroupShow": "closed",
+      "showCol": true,
+      "filter": "agTextColumnFilter"
+    },
+    {
+      "headerName": "Location",
+      "field": "Location",
+      "columnGroupShow": "closed",
+      "showCol": true,
+      "filter": "agTextColumnFilter"
+    },
+    {
+      "headerName": "Date",
+      "field": "CreatedDate",
+      "resizable": true,
+      "showCol": true
+    },
+    {
+      "headerName": "Hiring Manager",
+      "field": "hm",
+      "resizable": true,
+      "showCol": true
+    },
+    {
+      "headerName": "Status",
+      "field": "JobStatus",
+      "resizable": true,
+      "sortable": true,
+      "showCol": true
+    }
+  ],
+  "colDefExcluded": [
+    {
+      "headerName": "",
+      "field": "",
+      "pinned": "left"
+    },
+    {
+      "headerName": "JobID",
+      "field": "JobID",
+      "resizable": true,
+      "pinned": "left",
+      "filter": "agTextColumnFilter",
+      "floatingFilter": true
+    },
+    {
+      "headerName": "Title",
+      "field": "Title"
+    },
+    {
+      "headerName": "Company",
+      "field": "CompanyName"
+    },
+    {
+      "headerName": "Date",
+      "field": "CreatedDate",
+      "resizable": true
+    },
+    {
+      "headerName": "Status",
+      "field": "JobStatus",
+      "resizable": true,
       "sortable": true
-   }
-],
-"colDefExcluded" :
-[
-   {
-      "headerName":"",
-      "field":"",
-      "pinned":"left"
-   },
-   {
-      "headerName":"JobID",
-      "field":"JobID",
-      "resizable":true,
-      "pinned":"left",
-      "filter":"agTextColumnFilter",
-      "floatingFilter":true
-   },
-   {
-      "headerName":"Job",
-      "children":[
-         {
-            "headerName":"Title",
-            "field":"Title"
-         },
-         {
-            "headerName":"Company",
-            "field":"CompanyName",
-            "columnGroupShow":"closed"
-         }
-  
+    }
+  ],
+  "mobileDef": [
+    {
+      "headerName": "JobID",
+      "field": "JobID"
+    },
+    {
+      "headerName": "Job",
+      "children": [
+        {
+          "headerName": "Title",
+          "field": "Title",
+          "columnGroupShow": "open"
+        },
+        {
+          "headerName": "Company",
+          "field": "CompanyName",
+          "columnGroupShow": "closed"
+        },
+        {
+          "headerName": "Location",
+          "field": "Location",
+          "columnGroupShow": "closed"
+        }
       ]
-   },
-   {
-      "headerName":"Date",
-      "field":"CreatedDate",
-      "resizable":true
-   },
-   {
-      "headerName":"Status",
-      "field":"JobStatus",
-      "resizable":true,
-      "sortable": true
-   }
-],
-"mobileDef": [
-   {
-      "headerName":"JobID",
-      "field":"JobID"
-   },
-   {
-      "headerName":"Job",
-      "children":[
-         {
-            "headerName":"Title",
-            "field":"Title",
-            "columnGroupShow":"open"
-         },
-         {
-            "headerName":"Company",
-            "field":"CompanyName",
-            "columnGroupShow":"closed"
-         },
-         {
-            "headerName":"Location",
-            "field":"Location",
-            "columnGroupShow":"closed"
-         }
-      ]
-   },
-   {
-      "headerName":"Status",
-      "field":"JobStatus"
-   }
-]
-
+    },
+    {
+      "headerName": "Status",
+      "field": "JobStatus"
+    }
+  ]
 }
