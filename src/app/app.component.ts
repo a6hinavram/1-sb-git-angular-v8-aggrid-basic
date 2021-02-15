@@ -56,7 +56,7 @@ export class AppComponent {
         width: 20
       };
 
-      this.rowSelection = "single";
+      this.rowSelection = "multiple";
     }
 
     this.gridOptions.pagination = true;
